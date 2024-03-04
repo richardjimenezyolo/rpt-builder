@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark"/>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+
+    <title>Hello world!</title>
+    <style>
+        html, body {
+            height: 100vh;
+        }
+
+        /* Light color scheme (Default) */
+        /* Can be forced with data-theme="light" */
+        [data-theme="light"] {
+            body {
+                background: #f1f5f9;
+                height: 100vh;
+            }
+
+            hr {
+                background: white;
+                color: white;
+            }
+        }
+
+        .report-container {
+            width: 8.5in;
+            height: 11in;
+            background: white;
+            position: relative;
+        }
+
+        .cube {
+            height: 50px;
+            width: fit-content;
+            border: 2px dashed #BBB;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+<main class="container" x-data="main">
+    <nav>
+        <ul>
+            <li>
+                <h3>Eth Report builder</h3>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button @click="showModal = true" class="outline">➕</button>
+                <button class="secondary outline" onclick="changeTheme()">🌓</button>
+            </li>
+        </ul>
+    </nav>
+    <hr>
+
+    <div style="display: flex; justify-content: center">
+        <div class="report-container" @dragover="allowDrop(event)" @drop="onDrop(event)">
+            <template x-for="(i, idx) in elements" :key="idx">
+                <div
+                        class="cube"
+                        draggable="true"
+                        @drag="handleDrag"
+                        @dragstart="getPosition(event, idx)"
+                        @dragend="dragEnd"
+                        :style="`top: ${i.top}px;
+                        left: ${i.left}px;
+                        width: ${i.value ? i.value.length : 16}rem`">
+                    <input
+                            x-show="i.type === 'text'"
+                            x-model="i.value"
+                            style="
+                                background: none;
+                                border: none;
+                                max-height: 100%;
+                                padding: 0;
+                                margin: 0;
+                                width: 100%;
+                                text-align: center;
+                            "
+                    >
+                </div>
+            </template>
+        </div>
+    </div>
+    <dialog :open="showModal">
+        <article>
+            <header>
+                <button aria-label="Close" rel="prev" @click="showModal = false"></button>
+                <p>
+                    <strong>➕ Add a new element</strong>
+                </p>
+            </header>
+            <p>
+                Select the type of element to add:
+            </p>
+            <ul>
+                <li><a href="#" @click="addItem('text')">Text</a></li>
+                <li><a href="#" @click="addItem('image')">Image</a></li>
+            </ul>
+        </article>
+    </dialog>
+</main>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('main', () => ({
+            offsetX: 0,
+            offsetY: 0,
+
+            elements: [],
+            showModal: false,
+
+            addItem(type) {
+                this.elements.push({
+                    type,
+                    top: 151,
+                    left: 198.5,
+                    value: ''
+                })
+                this.showModal = false
+            },
+
+            allowDrop(ev) {
+                ev.preventDefault()
+            },
+            /**
+             * @param {DragEvent} ev
+             **/
+            onDrop(ev) {
+                const target = this.elements[+ev.dataTransfer.getData('text')]
+
+                const y = ev.y - ev.target.offsetTop;
+                const x = ev.x - ev.target.offsetLeft
+                target.left = x - this.offsetX
+                target.top = y - this.offsetY
+            },
+            handleDrag(ev) {
+                ev.target.style.display = 'none'
+            },
+            dragEnd(ev) {
+                ev.target.style.display = 'block'
+            },
+            /**
+             *
+             * @param {DragEvent} ev
+             * @param {Number} idx
+             */
+            getPosition(ev, idx) {
+                ev.dataTransfer.setData('text', idx)
+                const clientRect = ev.target.getBoundingClientRect()
+                this.offsetX = ev.clientX - clientRect.left
+                this.offsetY = ev.clientY - clientRect.top
+            }
+        }))
+    })
+
+    const changeTheme = () => {
+        const theme = document.querySelector('html').getAttribute('data-theme') === 'light' ? 'dark' : 'light'
+        document.querySelector('html').setAttribute('data-theme', theme)
+    }
+
+</script>
+
+</body>
+
+</html>
