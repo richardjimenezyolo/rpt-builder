@@ -1,4 +1,4 @@
-import './components/Image.js'
+import './components/RptImage.js'
 import './components/RptText.js'
 import initialTemplate from './testTemplate.json'
 

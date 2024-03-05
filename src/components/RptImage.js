@@ -1,6 +1,6 @@
 import Element from './RptElement.js'
 
-class Image extends Element {
+class RptImage extends Element {
     constructor() {
         super();
         this.addEventListener('dblclick', this.onDbClick)
@@ -24,6 +24,11 @@ class Image extends Element {
         }
     }
 
+    /**
+     *
+     * @param {File} file
+     * @return {Promise<String>}
+     */
     getBase64(file) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -38,7 +43,6 @@ class Image extends Element {
             <div
                 class="cube"
                 draggable="true"
-                @dblclick="onDbClick(idx)"
                 style="
                     top: ${this.element.y || 0}px;
                     left: ${this.element.x || 0}px;
@@ -53,4 +57,4 @@ class Image extends Element {
     }
 }
 
-window.customElements.define('rpt-img', Image, {extends: 'div'})
+window.customElements.define('rpt-img', RptImage, {extends: 'div'})
