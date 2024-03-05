@@ -18,8 +18,12 @@ body {
 }
 
 .report-container {
-    width: 8.5in;
-    height: 11in;
+    /*width: 8.5in;*/
+    /*height: 11in;*/
+
+    height: 8.5in;
+    width: 11in;
+
     background: white;
     position: relative;
 }
@@ -27,18 +31,6 @@ body {
 .cube {
     height: 50px;
     width: fit-content;
-    border: 2px dashed #BBB;
     position: absolute;
     cursor: pointer;
-}
-
-.element-input {
-    background: none;
-    border: none;
-    max-height: 100%;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    text-align: center;
-    color: black;
 }

@@ -3,11 +3,6 @@ import Element from './RptElement.js'
 class RptText extends Element {
 
     #intitialized = false
-
-    constructor() {
-        super();
-    }
-
     connectedCallback() {
         this.render()
         this.#intitialized = true
