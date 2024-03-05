@@ -2,70 +2,71 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark"/>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
-  <link rel="stylesheet" href="./src/style.css">
-  <script src="src/app.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="./src/style.css">
 
+    <script src="./src/app.js" type="module" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  <title>Rpt builder</title>
+    <title>Rpt builder</title>
 </head>
 
 <body>
-  <main class="container" x-data="main">
+<main class="container" x-data="main">
     <nav>
-      <ul>
-        <li>
-          <h3>Report builder</h3>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <button @click="showModal = true" class="outline">➕</button>
-          <button class="secondary outline" onclick="changeTheme()">🌓</button>
-        </li>
-      </ul>
+        <ul>
+            <li>
+                <h3>Report builder</h3>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button @click="showModal = true" class="outline">➕</button>
+                <button class="secondary outline" onclick="changeTheme()">🌓</button>
+            </li>
+        </ul>
     </nav>
     <hr>
-
     <div style="display: flex; justify-content: center">
-      <div class="report-container" @dragover="allowDrop(event)" @drop="onDrop(event)">
-        <template x-for="(i, idx) in elements" :key="idx">
-          <div class="cube" draggable="true" @drag="handleDrag" @dragstart="getPosition(event, idx)" @dragend="dragEnd"
-            @dblclick="onDbClick(idx)" :style="getElementStyles(i)">
-            <template x-if="i.type === 'text'">
-              <input x-model="i.value" class="element-input">
+        <div class="report-container" @dragover="allowDrop(event)" @drop="onDrop(event)">
+            <template x-for="(i, idx) in report.elements" :key="idx">
+                <div
+                    x-html="`<div is='${i.type}' x-model='i.value' :element='JSON.stringify(i)' :idx='idx'></div>`"></div>
             </template>
-            <template x-if="i.type === 'image'">
-              <img :src="i.value" draggable="false" />
-            </template>
-          </div>
-        </template>
-      </div>
+        </div>
     </div>
-    <input type="file" style="display: none" x-ref="fileInp" @change="onFileUploaded">
+
+    <textarea :value="JSON.stringify(report)" @input="elements = "></textarea>
+
     <dialog :open="showModal">
-      <article>
-        <header>
-          <button aria-label="Close" rel="prev" @click="showModal = false"></button>
-          <p>
-            <strong>➕ Add a new element</strong>
-          </p>
-        </header>
-        <p>
-          Select the type of element to add:
-        </p>
-        <ul>
-          <li><a href="#" @click="addItem('text')">Text</a></li>
-          <li><a href="#" @click="addItem('image')">Image</a></li>
-        </ul>
-      </article>
+        <article>
+            <header>
+                <button aria-label="Close" rel="prev" @click="showModal = false"></button>
+                <p>
+                    <strong>➕ Add a new element</strong>
+                </p>
+            </header>
+            <p>
+                Select the type of element to add:
+            </p>
+            <ul>
+                <li><a href="#" @click="addItem('rpt-text')">Text</a></li>
+                <li><a href="#" @click="addItem('rpt-img')">Image</a></li>
+            </ul>
+        </article>
     </dialog>
-  </main>
+</main>
+
+<script>
+    function changeTheme() {
+        const theme = document.querySelector('html').getAttribute('data-theme') === 'light' ? 'dark' : 'light'
+        document.querySelector('html').setAttribute('data-theme', theme)
+    }
+</script>
 </body>
 
 </html>
