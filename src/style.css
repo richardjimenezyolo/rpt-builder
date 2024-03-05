@@ -1,0 +1,44 @@
+html,
+body {
+    height: 100vh;
+}
+
+/* Light color scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"] {
+    body {
+        background: #f1f5f9;
+        height: 100vh;
+    }
+
+    hr {
+        background: white;
+        color: white;
+    }
+}
+
+.report-container {
+    width: 8.5in;
+    height: 11in;
+    background: white;
+    position: relative;
+}
+
+.cube {
+    height: 50px;
+    width: fit-content;
+    border: 2px dashed #BBB;
+    position: absolute;
+    cursor: pointer;
+}
+
+.element-input {
+    background: none;
+    border: none;
+    max-height: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
