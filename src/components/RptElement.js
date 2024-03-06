@@ -3,10 +3,17 @@ export default class RptElement extends HTMLDivElement {
         super();
         this.element = {}
 
-        this.addEventListener('drop', (ev) => {ev.stopPropagation()})
-        this.addEventListener('drag', this.handleDrag)
-        this.addEventListener('dragend', this.dragEnd)
-        this.addEventListener('dragstart', this.getPosition)
+        this.draggable = true;
+        this.style.position = 'absolute';
+        this.style.cursor = 'pointer';
+        this.addEventListener('drop', (ev) => {ev.stopPropagation()});
+        this.addEventListener('drag', this.handleDrag);
+        this.addEventListener('dragend', this.dragEnd);
+        this.addEventListener('dragstart', this.getPosition);
+    }
+
+    connectedCallback(){
+        this.render()
     }
 
     handleDrag(ev) {
@@ -27,7 +34,10 @@ export default class RptElement extends HTMLDivElement {
         ev.dataTransfer.setData('text', JSON.stringify({offsetX, offsetY, idx: +this.idx}))
     }
 
-    render() {}
+    render() {
+        this.style.left = `${this.element.x}px`
+        this.style.top = `${this.element.y}px`
+    }
 
     static get observedAttributes() { return ['element', 'idx', 'value']; }
 

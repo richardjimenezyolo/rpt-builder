@@ -39,7 +39,7 @@
             </template>
         </div>
     </div>
-
+    <br><br>
     <textarea :value="JSON.stringify(report)"></textarea>
 
     <dialog :open="showModal">
@@ -56,6 +56,7 @@
             <ul>
                 <li><a href="#" @click="addItem('rpt-text')">Text</a></li>
                 <li><a href="#" @click="addItem('rpt-img')">Image</a></li>
+                <li><a href="#" @click="addItem('rpt-table')">table</a></li>
             </ul>
         </article>
     </dialog>

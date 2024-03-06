@@ -9,11 +9,6 @@ html, body {
         background: #f1f5f9;
         height: 100vh;
     }
-
-    hr {
-        background: white;
-        color: white;
-    }
 }
 
 nav {
@@ -24,16 +19,9 @@ nav {
     /*width: 8.5in;*/
     /*height: 11in;*/
 
-    height: 8.5in;
-    width: 11in;
+    min-height: 8.5in;
+    min-width: 11in;
 
     background: white;
     position: relative;
-}
-
-.cube {
-    height: 50px;
-    width: fit-content;
-    position: absolute;
-    cursor: pointer;
 }

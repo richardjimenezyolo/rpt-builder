@@ -39,21 +39,22 @@ class RptImage extends Element {
     }
 
     render() {
-        this.innerHTML = `
-            <div
-                class="cube"
-                draggable="true"
-                style="
-                    top: ${this.element.y || 0}px;
-                    left: ${this.element.x || 0}px;
-                    min-width: 10px;
-                    min-height: 10px;
-                    width: fit-content;
-                    height: fit-content;
-                ">
-                <img src="${this.element.value}" width="auto" height="auto" draggable="false"/>
-            </div>
-`
+        super.render()
+
+        this.innerHTML = ''
+
+        // this.innerHTML = `<img src="${this.element.value}" width="auto" height="auto" draggable="false"/>`
+
+        const img = new Image()
+        img.src = this.element.value
+        img.draggable = false
+        this.appendChild(img)
+
+
+        this.style.minWidth = '10px'
+        this.style.minHeight = '10px'
+        this.style.width = 'fit-content'
+        this.style.height = 'fit-content'
     }
 }
 

@@ -1,5 +1,6 @@
 import './components/RptImage.js'
 import './components/RptText.js'
+import './components/RptDataTable.js'
 import initialTemplate from './testTemplate.json'
 
 document.addEventListener('alpine:init', () => {
