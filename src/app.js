@@ -11,6 +11,7 @@ document.addEventListener('alpine:init', () => {
         currentElement: 0,
 
         report: initialTemplate,
+        selectedElement: null,
 
         addItem(type) {
             this.report.elements.push({
@@ -22,9 +23,19 @@ document.addEventListener('alpine:init', () => {
             this.showModal = false
         },
 
+        destroy(ev) {
+            this.report.elements.splice(ev.elementIdx,1)
+        },
+
         allowDrop(ev) {
             ev.preventDefault()
         },
+
+        onFocus(ev) {
+            this.currentElement = ev.target
+            console.log(ev.target)
+        },
+
         /**
          * @param {DragEvent} ev
          **/

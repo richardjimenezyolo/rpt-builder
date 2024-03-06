@@ -24,6 +24,21 @@ class RptImage extends Element {
         }
     }
 
+    render() {
+        super.render()
+        this.innerHTML = ''
+
+        const img = new Image()
+        img.src = this.element.value
+        img.draggable = false
+        this.appendChild(img)
+
+        this.style.minWidth = '10px'
+        this.style.minHeight = '10px'
+        this.style.width = 'fit-content'
+        this.style.height = 'fit-content'
+    }
+
     /**
      *
      * @param {File} file
@@ -36,25 +51,6 @@ class RptImage extends Element {
             reader.onload = () => resolve(reader.result);
             reader.onerror = error => reject(error);
         });
-    }
-
-    render() {
-        super.render()
-
-        this.innerHTML = ''
-
-        // this.innerHTML = `<img src="${this.element.value}" width="auto" height="auto" draggable="false"/>`
-
-        const img = new Image()
-        img.src = this.element.value
-        img.draggable = false
-        this.appendChild(img)
-
-
-        this.style.minWidth = '10px'
-        this.style.minHeight = '10px'
-        this.style.width = 'fit-content'
-        this.style.height = 'fit-content'
     }
 }
 

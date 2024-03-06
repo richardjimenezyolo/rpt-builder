@@ -16,12 +16,6 @@ nav {
 }
 
 .report-container {
-    /*width: 8.5in;*/
-    /*height: 11in;*/
-
-    min-height: 8.5in;
-    min-width: 11in;
-
     background: white;
     position: relative;
 }

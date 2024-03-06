@@ -32,10 +32,16 @@
     </nav>
     <hr>
     <div style="display: flex; justify-content: center">
-        <div class="report-container" @dragover="allowDrop(event)" @drop="onDrop(event)">
+        <div
+            class="report-container"
+            :style="`min-width: ${report.width}; min-height: ${report.height}`"
+            @dragover="allowDrop(event)"
+            @drop="onDrop(event)"
+        >
             <template x-for="(i, idx) in report.elements" :key="idx">
                 <div
-                    x-html="`<div is='${i.type}' x-model='i.value' :element='JSON.stringify(i)' :idx='idx'></div>`"></div>
+                    x-html="`<div is='${i.type}' x-model='i.value' :element='JSON.stringify(i)' :idx='idx' @delete='destroy' @focus='onFocus'></div>`">
+                </div>
             </template>
         </div>
     </div>

@@ -4,12 +4,32 @@ export default class RptElement extends HTMLDivElement {
         this.element = {}
 
         this.draggable = true;
+        this.tabIndex = 0
         this.style.position = 'absolute';
         this.style.cursor = 'pointer';
-        this.addEventListener('drop', (ev) => {ev.stopPropagation()});
+        this.addEventListener('drop', (ev) => ev.stopPropagation());
         this.addEventListener('drag', this.handleDrag);
         this.addEventListener('dragend', this.dragEnd);
         this.addEventListener('dragstart', this.getPosition);
+        this.addEventListener('focus', this.onFocus)
+        this.addEventListener('blur', this.onBlur)
+        this.addEventListener('keyup', this.onKeyUp)
+    }
+
+    onKeyUp(ev) {
+        if (ev.key === 'Delete') {
+            const event = new Event('delete')
+            event.elementIdx = +this.idx
+            this.dispatchEvent(event)
+        }
+    }
+
+    onFocus() {
+        this.style.border = '1px dotted black'
+    }
+
+    onBlur() {
+        this.style.border = ''
     }
 
     connectedCallback(){
