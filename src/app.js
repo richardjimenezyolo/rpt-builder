@@ -31,10 +31,9 @@ document.addEventListener('alpine:init', () => {
             const data = JSON.parse(ev.dataTransfer.getData('text'))
             const target = this.report.elements[data.idx]
 
-            const y = ev.y - ev.target.offsetTop;
-            const x = ev.x - ev.target.offsetLeft
-            target.x = x - data.offsetX
-            target.y = y - data.offsetY
+            const clientRect = ev.target.getBoundingClientRect()
+            target.x =  ev.clientX - clientRect.left - data.offsetX
+            target.y =  ev.clientY - clientRect.top - data.offsetY
         },
     }))
 })
