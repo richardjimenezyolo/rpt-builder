@@ -18,7 +18,7 @@ class RptText extends Element {
                     style="
                     background: 0;
                     height: 100%;
-                    border: 0;
+                    border: 1px dotted black;
                     color: black;
                     text-align: center;
                     "

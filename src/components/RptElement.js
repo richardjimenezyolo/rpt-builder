@@ -3,6 +3,7 @@ export default class RptElement extends HTMLDivElement {
         super();
         this.element = {}
 
+        this.addEventListener('drop', (ev) => {ev.stopPropagation()})
         this.addEventListener('drag', this.handleDrag)
         this.addEventListener('dragend', this.dragEnd)
         this.addEventListener('dragstart', this.getPosition)
