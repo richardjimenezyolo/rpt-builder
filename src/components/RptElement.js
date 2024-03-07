@@ -25,6 +25,9 @@ export default class RptElement extends HTMLDivElement {
     }
 
     onFocus() {
+        const event = new Event('focus')
+        event.elementIdx = +this.idx
+        console.log(event)
         this.style.border = '1px dotted black'
     }
 
