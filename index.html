@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark"/>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.min.css"/>
     <link rel="stylesheet" href="./src/style.css">
 
     <script src="./src/app.js" type="module" defer></script>
@@ -15,26 +15,26 @@
     <title>Rpt builder</title>
 </head>
 
-<body>
-<main class="container" x-data="main">
-    <nav>
-        <ul>
-            <li>
-                <h3>Report builder</h3>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <button @click="showModal = true" class="outline">➕</button>
-                <button class="secondary outline" onclick="changeTheme()">🌓</button>
-            </li>
-        </ul>
-    </nav>
-    <hr>
-    <div style="display: flex; justify-content: center">
+<body x-data="main">
+<main style="display: flex; justify-content: space-between; height: 100%;">
+
+    <div style="padding-right: 1rem">
+        <div class="pico side-bar">
+            <p>
+                Select the type of element to add:
+            </p>
+            <ul>
+                <li><a href="#" @click="addItem('rpt-text')">Text</a></li>
+                <li><a href="#" @click="addItem('rpt-img')">Image</a></li>
+                <li><a href="#" @click="addItem('rpt-table')">table</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pico" style="padding-top: 1rem; display: flex; flex-direction: column; justify-content: center">
         <div
             class="report-container"
-            :style="`min-width: ${report.width}; min-height: ${report.height}`"
+            :style="`min-width: ${report.width}; min-height: ${report.height}; max-height: ${report.height}`"
             @dragover="allowDrop(event)"
             @drop="onDrop(event)"
         >
@@ -44,28 +44,12 @@
                 </div>
             </template>
         </div>
-    </div>
-    <br><br>
-    <textarea :value="JSON.stringify(report)"></textarea>
 
-    <dialog :open="showModal">
-        <article>
-            <header>
-                <button aria-label="Close" rel="prev" @click="showModal = false"></button>
-                <p>
-                    <strong>➕ Add a new element</strong>
-                </p>
-            </header>
-            <p>
-                Select the type of element to add:
-            </p>
-            <ul>
-                <li><a href="#" @click="addItem('rpt-text')">Text</a></li>
-                <li><a href="#" @click="addItem('rpt-img')">Image</a></li>
-                <li><a href="#" @click="addItem('rpt-table')">table</a></li>
-            </ul>
-        </article>
-    </dialog>
+<!--        <textarea :value="JSON.stringify(report)"></textarea>-->
+
+    </div>
+
+    <rpt-sidebar-properties></rpt-sidebar-properties>
 </main>
 
 <script>

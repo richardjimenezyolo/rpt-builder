@@ -2,12 +2,19 @@ html, body {
     height: 100vh;
 }
 
+* {
+    transition: 0.5s;
+}
+
 /* Light color scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"] {
-    body {
-        background: #f1f5f9;
-        height: 100vh;
+   html, body {
+       background: #f1f5f9;
+   }
+
+    .side-bar {
+        background: white;
     }
 }
 
@@ -15,7 +22,36 @@ nav {
     height: 3rem;
 }
 
+main {
+    margin-bottom: 0;
+}
+
 .report-container {
     background: white;
     position: relative;
+}
+
+.side-bar{
+    width: 100%;
+    padding: 1rem;
+    height: 100%;
+    background-color: #1e293b;
+    transition: 0.5s;
+}
+
+.accordion-rpt{
+    color: black;
+    width: 100%;
+    margin-bottom: 5px !important;
+    border: none;
+    text-decoration: none;
+    text-align: left;
+    font-size: 15px;
+    transition: 0.4s;
+    font-weight: bold;
+}
+
+.container-input-color-rpt{
+    width: 70px;
+    height: 30px;
 }

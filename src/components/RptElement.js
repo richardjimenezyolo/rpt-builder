@@ -7,6 +7,7 @@ export default class RptElement extends HTMLDivElement {
         this.tabIndex = 0
         this.style.position = 'absolute';
         this.style.cursor = 'pointer';
+
         this.addEventListener('drop', (ev) => ev.stopPropagation());
         this.addEventListener('drag', this.handleDrag);
         this.addEventListener('dragend', this.dragEnd);

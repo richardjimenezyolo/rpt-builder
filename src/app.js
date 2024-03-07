@@ -1,6 +1,7 @@
 import './components/RptImage.js'
 import './components/RptText.js'
 import './components/RptDataTable.js'
+import './RptSidebarProperties.js'
 import initialTemplate from './testTemplate.json'
 
 document.addEventListener('alpine:init', () => {
@@ -9,9 +10,12 @@ document.addEventListener('alpine:init', () => {
         offsetY: 0,
         showModal: false,
         currentElement: 0,
-
+        showSidebar: false,
+        type: '',
         report: initialTemplate,
         selectedElement: null,
+        showTextAccordion: false,
+        textColor: '',
 
         addItem(type) {
             this.report.elements.push({
@@ -32,8 +36,20 @@ document.addEventListener('alpine:init', () => {
         },
 
         onFocus(ev) {
+            this.showSidebar = true
             this.currentElement = ev.target
             console.log(ev.target)
+            this.Sidebar()
+        },
+
+        updateProperties(event) {
+            const idx = +this.currentElement.idx
+            this.report.elements[idx].properties.color = event.target.value
+        },
+
+        Sidebar(){
+          const idx = parseInt( this.currentElement.idx)
+          this.type =  this.report.elements[idx].type
         },
 
         /**
