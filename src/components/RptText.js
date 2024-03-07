@@ -17,17 +17,15 @@ class RptText extends Element {
                     background: 0;
                     height: 100%;
                     border: 1px dotted black;
-                    color:  black;
                     text-align: center;
                     ">`
         }
 
         this.style.width = `${this.element.value ? this.element.value.length + 4 : 16}ch`
-        this.childNodes[0].style.color = this.element?.properties?.color || 'black'
-
         const inputElement = this.querySelector('input');
-
+        inputElement.style.color = this.element?.properties?.color || 'black'
         inputElement.value = this.element.value
+
     }
 }
 

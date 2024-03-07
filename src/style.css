@@ -5,9 +5,12 @@ html, body {
 /* Light color scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"] {
-    body {
-        background: #f1f5f9;
-        height: 100vh;
+   html, body {
+       background: #f1f5f9;
+   }
+
+    .side-bar-right {
+        background: white;
     }
 }
 
@@ -15,53 +18,32 @@ nav {
     height: 3rem;
 }
 
+main {
+    margin-bottom: 0;
+}
+
 .report-container {
     background: white;
     position: relative;
 }
 
-.side-bar-left {
-    width: 250px;
-    height: 87%;
-    border-radius: 1px 10px 10px 1px;
-    left: 0;
-    background-color: #adc5cf;
-    position: fixed;
-    bottom: 0;
-    z-index: 1;
-    overflow-x: hidden;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: white;
-    transition: 0.5s;
-}
-
 .side-bar-right{
-    width: 250px;
-    border-radius: 10px 1px 1px 1px;
-    height: 87%;
+    width: 90%;
+    border-radius: 10px;
+    padding: 1rem;
+    height: 100%;
     background-color: #181C25;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
-    overflow-x: hidden;
-    padding-top: 20px;
-    color: white;
     transition: 0.5s;
 }
 
 .container-sidebar{
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
+    padding-left: 2rem;
 }
 
 .accordion-rpt{
     color: black;
-    padding: 18px;
     width: 100%;
+    margin-bottom: 5px !important;
     border: none;
     text-decoration: none;
     text-align: left;

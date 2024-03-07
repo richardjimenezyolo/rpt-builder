@@ -41,11 +41,9 @@ document.addEventListener('alpine:init', () => {
             this.Sidebar()
         },
 
-
         updateProperties(event) {
-            const idx = parseInt(this.currentElement.idx)
+            const idx = +this.currentElement.idx
             this.report.elements[idx].properties.color = event.target.value
-            this.currentElement.childNodes[0].style.color = event.target.value
         },
 
         Sidebar(){

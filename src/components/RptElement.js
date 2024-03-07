@@ -7,6 +7,9 @@ export default class RptElement extends HTMLDivElement {
         this.tabIndex = 0
         this.style.position = 'absolute';
         this.style.cursor = 'pointer';
+
+        this.classList.add('pico')
+
         this.addEventListener('drop', (ev) => ev.stopPropagation());
         this.addEventListener('drag', this.handleDrag);
         this.addEventListener('dragend', this.dragEnd);
@@ -25,9 +28,6 @@ export default class RptElement extends HTMLDivElement {
     }
 
     onFocus() {
-        const event = new Event('focus')
-        event.elementIdx = +this.idx
-        console.log(event)
         this.style.border = '1px dotted black'
     }
 

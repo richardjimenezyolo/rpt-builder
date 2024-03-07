@@ -12,7 +12,7 @@
             "x": 397,
             "y": 84.390625,
             "properties": {
-                "color": "#F88046"
+                "color": "black"
             }
         },
         {
@@ -33,7 +33,7 @@
             "y": 11.453125,
             "value": "Fecha impresión",
             "properties": {
-                "color": "#F88046"
+                "color": "black"
             }
         },
         {
@@ -48,7 +48,7 @@
             "y": 232.90625,
             "value": "Lorem ipsum asdasdasdas",
             "properties": {
-                "color": "#F88046"
+                "color": "black"
             }
         },
         {

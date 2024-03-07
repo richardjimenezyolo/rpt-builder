@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -31,7 +31,9 @@
         </ul>
     </nav>
     <hr>
-    <div style="display: flex; justify-content: center">
+    <div style="display: flex; justify-content: space-between;">
+        <div style="flex-grow: 1"></div>
+
         <div
             class="report-container"
             :style="`min-width: ${report.width}; min-height: ${report.height}`"
@@ -44,9 +46,20 @@
                 </div>
             </template>
         </div>
+
+        <div class="container-sidebar" style="flex-grow: 1">
+            <div class="side-bar-right">
+                <p x-text="type"></p>
+                <details :open="showTextAccordion" x-show="type === 'rpt-text'">
+                    <summary class="accordion-rpt">Texto</summary>
+                    <div class="container-input-color-rpt">
+                        <input type="color" @input="updateProperties" x-mode="textColor" id="favcolor" name="favcolor">
+                    </div>
+                </details>
+            </div>
+        </div>
+
     </div>
-    <br><br>
-    <textarea :value="JSON.stringify(report)"></textarea>
 
     <dialog :open="showModal">
         <article>
@@ -66,25 +79,6 @@
             </ul>
         </article>
     </dialog>
-
-    <div class="container-sidebar">
-        <button @click="showSidebar=true" style="width: 100%">click</button>
-<!--            <div class="side-bar-left" x-show="showSidebar">-->
-<!--                <p>hola</p>-->
-<!--            </div>-->
-        <div class="side-bar-right" x-show="showSidebar">
-            <p x-text="type"></p>
-            <details :open="showTextAccordion" x-show="type === 'rpt-text'">
-                <summary class="accordion-rpt">Texto</summary>
-                <div class="container-input-color-rpt">
-                    <input  type="color" @input="updateProperties" x-mode="textColor" id="favcolor" name="favcolor">
-                </div>
-            </details>
-        </div>
-
-    </div>
-
-
 </main>
 
 <script>
