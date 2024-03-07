@@ -66,6 +66,25 @@
             </ul>
         </article>
     </dialog>
+
+    <div class="container-sidebar">
+        <button @click="showSidebar=true" style="width: 100%">click</button>
+<!--            <div class="side-bar-left" x-show="showSidebar">-->
+<!--                <p>hola</p>-->
+<!--            </div>-->
+        <div class="side-bar-right" x-show="showSidebar">
+            <p x-text="type"></p>
+            <details :open="showTextAccordion" x-show="type === 'rpt-text'">
+                <summary class="accordion-rpt">Texto</summary>
+                <div class="container-input-color-rpt">
+                    <input  type="color" @input="updateProperties" x-mode="textColor" id="favcolor" name="favcolor">
+                </div>
+            </details>
+        </div>
+
+    </div>
+
+
 </main>
 
 <script>

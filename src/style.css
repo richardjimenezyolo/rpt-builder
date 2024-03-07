@@ -19,3 +19,58 @@ nav {
     background: white;
     position: relative;
 }
+
+.side-bar-left {
+    width: 250px;
+    height: 87%;
+    border-radius: 1px 10px 10px 1px;
+    left: 0;
+    background-color: #adc5cf;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+    transition: 0.5s;
+}
+
+.side-bar-right{
+    width: 250px;
+    border-radius: 10px 1px 1px 1px;
+    height: 87%;
+    background-color: #181C25;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white;
+    transition: 0.5s;
+}
+
+.container-sidebar{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.accordion-rpt{
+    color: black;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    text-align: left;
+    font-size: 15px;
+    transition: 0.4s;
+    font-weight: bold;
+}
+
+.container-input-color-rpt{
+    width: 70px;
+    height: 30px;
+}

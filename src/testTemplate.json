@@ -10,7 +10,10 @@
             "type": "rpt-text",
             "value": "Reporte de asistencia",
             "x": 397,
-            "y": 84.390625
+            "y": 84.390625,
+            "properties": {
+                "color": "#F88046"
+            }
         },
         {
             "type": "rpt-img",
@@ -28,7 +31,10 @@
             "type": "rpt-text",
             "x": 746,
             "y": 11.453125,
-            "value": "Fecha impresión"
+            "value": "Fecha impresión",
+            "properties": {
+                "color": "#F88046"
+            }
         },
         {
             "type": "rpt-img",
@@ -40,7 +46,10 @@
             "type": "rpt-text",
             "x": 712.5,
             "y": 232.90625,
-            "value": "Lorem ipsum asdasdasdas"
+            "value": "Lorem ipsum asdasdasdas",
+            "properties": {
+                "color": "#F88046"
+            }
         },
         {
             "type": "rpt-table",
