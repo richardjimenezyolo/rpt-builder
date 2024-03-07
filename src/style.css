@@ -2,6 +2,10 @@ html, body {
     height: 100vh;
 }
 
+* {
+    transition: 0.5s;
+}
+
 /* Light color scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"] {
@@ -9,7 +13,7 @@ html, body {
        background: #f1f5f9;
    }
 
-    .side-bar-right {
+    .side-bar {
         background: white;
     }
 }
@@ -27,17 +31,12 @@ main {
     position: relative;
 }
 
-.side-bar-right{
-    width: 90%;
-    border-radius: 10px;
+.side-bar{
+    width: 100%;
     padding: 1rem;
     height: 100%;
-    background-color: #181C25;
+    background-color: #1e293b;
     transition: 0.5s;
-}
-
-.container-sidebar{
-    padding-left: 2rem;
 }
 
 .accordion-rpt{

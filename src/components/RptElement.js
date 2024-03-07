@@ -8,8 +8,6 @@ export default class RptElement extends HTMLDivElement {
         this.style.position = 'absolute';
         this.style.cursor = 'pointer';
 
-        this.classList.add('pico')
-
         this.addEventListener('drop', (ev) => ev.stopPropagation());
         this.addEventListener('drag', this.handleDrag);
         this.addEventListener('dragend', this.dragEnd);
