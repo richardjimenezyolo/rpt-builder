@@ -24,6 +24,8 @@ class RptText extends Element {
         this.style.width = `${this.element.value ? this.element.value.length + 4 : 16}ch`
         const inputElement = this.querySelector('input');
         inputElement.style.color = this.element?.properties?.color || 'black'
+        inputElement.style.fontSize = `${this.element?.properties?.fontSize}`
+        inputElement.style.fontFamily = this.element?.properties?.fontFamily
         inputElement.value = this.element.value
 
     }

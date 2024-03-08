@@ -2,6 +2,7 @@ import './components/RptImage.js'
 import './components/RptText.js'
 import './components/RptDataTable.js'
 import './RptSidebarProperties.js'
+import './properties/RptPropertiesText.js'
 import initialTemplate from './testTemplate.json'
 
 document.addEventListener('alpine:init', () => {
@@ -39,12 +40,20 @@ document.addEventListener('alpine:init', () => {
             this.showSidebar = true
             this.currentElement = ev.target
             console.log(ev.target)
+            const idx = parseInt( this.currentElement.idx)
+            Alpine.store('storeProperties').onFocus2(idx, this.report)
             this.Sidebar()
+
         },
 
         updateProperties(event) {
             const idx = +this.currentElement.idx
-            this.report.elements[idx].properties.color = event.target.value
+
+            if (event.target.name === 'fontSize'){
+                this.report.elements[idx].properties[event.target.name] = `${event.target.value}px`
+                return
+            }
+            this.report.elements[idx].properties[event.target.name] = event.target.value
         },
 
         Sidebar(){

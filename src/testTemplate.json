@@ -14,7 +14,9 @@
             "x": 362,
             "y": 52.390625,
             "properties": {
-                "color": "black"
+                "color": "#408080",
+                "fontSize": 16,
+                "fontFamily": "Snap ITC"
             }
         },
         {
@@ -23,7 +25,9 @@
             "y": 11.453125,
             "value": "Fecha impresión",
             "properties": {
-                "color": "black"
+                "color": "#8080ff",
+                "fontSize": 14,
+                "fontFamily": "Arial"
             }
         },
         {
