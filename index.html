@@ -31,10 +31,10 @@
         </div>
     </div>
 
-    <div class="pico" style="padding-top: 1rem; display: flex; flex-direction: column; justify-content: center">
+    <div class="pico" style="padding-top: 1rem; display: flex; flex-direction: column; justify-content: center; width: 60%;">
         <div
             class="report-container"
-            :style="`min-width: ${report.width}; min-height: ${report.height}; max-height: ${report.height}`"
+            :style="`aspect-ratio: ${report.width} / ${report.height}`"
             @dragover="allowDrop(event)"
             @drop="onDrop(event)"
         >

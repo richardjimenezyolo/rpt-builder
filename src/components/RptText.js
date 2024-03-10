@@ -7,6 +7,11 @@ class RptText extends Element {
         super.connectedCallback()
         this.#intitialized = true
 
+      this.addEventListener('click', (ev) => {
+
+        const event = new Event('focus')
+        this.dispatchEvent(event)
+      })
     }
 
     render() {

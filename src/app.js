@@ -36,6 +36,7 @@ document.addEventListener('alpine:init', () => {
     },
 
     onFocus(ev) {
+      console.log(JSON.stringify(this.report))
       this.currentElementIdx = +ev.target.idx
       Alpine.store('properties', this.report.elements[ev.target.idx])
     },
