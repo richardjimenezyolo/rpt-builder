@@ -1,21 +1,44 @@
-class RptSidebarProperties extends HTMLElement {
-    connectedCallback() {
-        this.style.flexGrow = 1
-        this.style.paddingLeft = '10px'
+import './properties/RptTextProperties'
 
-        this.innerHTML = `
-        <div class="container-sidebar" style="height: 100%">
-            <div class="pico side-bar">
-                <p x-text="type"></p>
-                <details :open="showTextAccordion" x-show="type === 'rpt-text'">
-                    <summary class="accordion-rpt">Texto</summary>
-                    <div class="container-input-color-rpt">
-                        <input x-mode="textColor" type="color" @input="updateProperties">
-                    </div>
-                </details>
-            </div>
-        </div>
-`
+class RptSidebarProperties extends HTMLElement {
+
+  constructor() {
+    super()
+    this.element = {}
+  }
+
+  static oldIdx = 0
+
+  connectedCallback() {
+
+    this.render()
+  }
+
+  render() {
+    this.style.maxWidth = '20%'
+    if (this.oldIdx == this.idx) {
+      this.oldIdx = this.idx
+      return
     }
+
+    this.style.flexGrow = 1
+    this.style.paddingLeft = '10px'
+
+    console.log(this.element.type)
+    this.innerHTML = `
+            <div class="pico side-bar">
+                <${this.element.type}-properties />
+            </div>
+          `
+    this.oldIdx = this.idx
+  }
+
+  static observedAttributes = ['element', 'idx']
+
+  attributeChangedCallback(name, oldVal, newVal) {
+    this[name] = JSON.parse(newVal)
+    this.render()
+  }
+
 }
 window.customElements.define('rpt-sidebar-properties', RptSidebarProperties)

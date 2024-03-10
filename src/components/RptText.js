@@ -11,6 +11,8 @@ class RptText extends Element {
 
     render() {
         super.render()
+        this.style.fontSize = `${this.element?.properties?.size || 16}px`
+
 
         if (!this.#intitialized) {
             this.innerHTML = `<input value="${this.element.value || ''}" style="
@@ -24,9 +26,10 @@ class RptText extends Element {
         this.style.width = `${this.element.value ? this.element.value.length + 4 : 16}ch`
         const inputElement = this.querySelector('input');
         inputElement.style.color = this.element?.properties?.color || 'black'
+        inputElement.style.fontSize = `${this.element?.properties?.size || 16}px`
         inputElement.value = this.element.value
 
     }
 }
 
-window.customElements.define('rpt-text', RptText, {extends: 'div'})
+window.customElements.define('rpt-text', RptText, { extends: 'div' })

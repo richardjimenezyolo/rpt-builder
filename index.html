@@ -18,7 +18,7 @@
 <body x-data="main">
 <main style="display: flex; justify-content: space-between; height: 100%;">
 
-    <div style="padding-right: 1rem">
+    <div style="padding-right: 1rem; width: 20%;">
         <div class="pico side-bar">
             <p>
                 Select the type of element to add:
@@ -49,7 +49,7 @@
 
     </div>
 
-    <rpt-sidebar-properties></rpt-sidebar-properties>
+    <rpt-sidebar-properties :element="JSON.stringify(report.elements[currentElementIdx])" :idx="currentElementIdx"></rpt-sidebar-properties>
 </main>
 
 <script>
