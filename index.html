@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark"/>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.min.css"/>
+    <link rel="stylesheet" href="/pico.css"/>
     <link rel="stylesheet" href="./src/style.css">
 
     <script src="./src/app.js" type="module" defer></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="/alpine.js"></script>
 
     <title>Rpt builder</title>
 </head>
@@ -20,7 +20,12 @@
 
     <div style="padding-right: 1rem; width: 20%;">
         <div class="pico side-bar">
-            <input type="number" x-model="scale">
+            <select x-model="scale">
+                <option value="100">100%</option>
+                <option value="75">75%</option>
+                <option value="50">50%</option>
+                <option value="25">25%</option>
+            </select>
             <p>
                 Select the type of element to add:
             </p>
