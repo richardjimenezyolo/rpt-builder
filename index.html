@@ -20,6 +20,7 @@
 
     <div style="padding-right: 1rem; width: 20%;">
         <div class="pico side-bar">
+            <input type="number" x-model="scale">
             <p>
                 Select the type of element to add:
             </p>
@@ -34,7 +35,7 @@
     <div class="pico" style="padding-top: 1rem; display: flex; flex-direction: column; justify-content: center; width: 60%;">
         <div
             class="report-container"
-            :style="`aspect-ratio: ${report.width} / ${report.height}`"
+            :style="`min-width: ${report.width}; max-width: ${report.width}; min-height: ${report.height}; max-height: ${report.height}; scale: ${scale/100}`"
             @dragover="allowDrop(event)"
             @drop="onDrop(event)"
         >

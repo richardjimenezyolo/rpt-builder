@@ -60,7 +60,15 @@ main {
     font-weight: bold;
 }
 
-.container-input-color-rpt {
-    width: 70px;
-    height: 30px;
+.properties-container div {
+    display: flex;
+    justify-content: space-between
+}
+
+.properties-container input[type="color"],
+.properties-container input[type="number"],
+.properties-container input[type="text"] {
+    width: 5rem;
+    height: 2rem;
+    padding: 5px !important;
 }

@@ -26,7 +26,7 @@ class RptSidebarProperties extends HTMLElement {
 
     console.log(this.element.type)
     this.innerHTML = `
-            <div class="pico side-bar">
+            <div class="pico side-bar properties-container">
                 <${this.element.type}-properties />
             </div>
           `

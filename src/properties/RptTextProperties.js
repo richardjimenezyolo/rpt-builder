@@ -20,19 +20,23 @@ class RptTextProperties extends HTMLElement {
     render() {
         this.innerHTML = `
             <p>${this.element.type}</p>
-            <table>
-                <tr>
-                    <td>Font Color</td>
-                    <td><input name="color" value="${this.element.properties.color}" type="color" /></td>
-                </tr>
-                <tr>
-                    <td>Font Size</td>
-                    <td><input name="size" value="${this.element.properties.size || 16}" type="number" /></td>
-                </tr>
-            </table>
+            <details>
+                    <summary>Texto</summary>
+                         <div>
+                            <label>Color</label>
+                            <input name="color" type="color" value="${this.element.properties.color}">
+                        </div>
+                        <div>
+                            <label>Tamaño de Fuente</label>
+                            <input name="size" value="${this.element.properties.size}" type="number">
+                        </div>
 
+                         <div>
+                            <label>Tipo de Fuente</label>
+                            <input name="fontFamily" value="${this.element.properties.fontFamily}" type="text">
+                        </div>
+                </details>
         `
-
     }
 
 }

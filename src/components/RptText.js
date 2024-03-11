@@ -23,7 +23,7 @@ class RptText extends Element {
             this.innerHTML = `<input value="${this.element.value || ''}" style="
                     background: 0;
                     height: 100%;
-                    border: 1px dotted black;
+                    border: 0;
                     text-align: center;
                     ">`
         }
