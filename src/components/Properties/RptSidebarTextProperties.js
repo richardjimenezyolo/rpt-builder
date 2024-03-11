@@ -1,12 +1,9 @@
-class RptSidebarProperties extends HTMLElement {
-    connectedCallback() {
-        this.style.flexGrow = 1
-        this.style.paddingLeft = '10px'
+import RptSidebarProperties from "../RptSidebarProperties.js";
 
+class RptSidebarTextProperties extends HTMLElement{
+    render(){
         this.innerHTML = `
-        <div class="container-sidebar" style="height: 100%">
-            <div class="pico side-bar">
-                <p x-text="type"></p>
+            <div>
                 <details :open="showTextAccordion" x-show="type === 'rpt-text'">
                     <summary class="accordion-rpt">Texto</summary>
                     <div class="container-properties">
@@ -26,11 +23,12 @@ class RptSidebarProperties extends HTMLElement {
                     </div>
                 </details>
             </div>
-        </div>
-`
+        `
     }
 
-
+    connectedCallback(){
+        this.render()
+    }
 
 }
-window.customElements.define('rpt-sidebar-properties', RptSidebarProperties)
+window.customElements.define('rpt-text-properties', RptSidebarTextProperties)

@@ -11,9 +11,11 @@ document.addEventListener('alpine:init', () => {
 
         onFocus2(idx, report){
             Alpine.store('storeProperties').type = report.elements[idx].type
-            Alpine.store('storeProperties').fontSize =  report.elements[idx].properties.fontSize
-            Alpine.store('storeProperties').color =  report.elements[idx].properties.color
-            Alpine.store('storeProperties').fontFamily =  report.elements[idx].properties.fontFamily
+            if (report.elements[idx].type === 'rpt-text'){
+                Alpine.store('storeProperties').fontSize =  report.elements[idx].properties.fontSize
+                Alpine.store('storeProperties').color =  report.elements[idx].properties.color
+                Alpine.store('storeProperties').fontFamily =  report.elements[idx].properties.fontFamily
+            }
         }
     })
 })
