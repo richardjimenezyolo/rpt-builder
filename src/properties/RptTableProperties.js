@@ -18,6 +18,7 @@ class RptTableProperties extends HTMLElement {
      * @param {InputEvent} ev
      */
     whenChange(ev) {
+        ev.stopPropagation()
         const [idx, key] = ev.target.name.split('-')
         if (key === 'text') {
             this.querySelector(`#title-${idx}`).textContent = ev.target.value
@@ -46,7 +47,7 @@ class RptTableProperties extends HTMLElement {
 
         if (ev.target.name.split('-')[1] === 'del') {
             const [idx] = ev.target.name.split('-')
-            this.element.value.headers.splice(idx,1)
+            this.element.value.headers.splice(idx, 1)
             this.render()
             return
         }

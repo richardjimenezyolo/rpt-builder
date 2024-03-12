@@ -17,6 +17,10 @@ document.addEventListener('alpine:init', () => {
         textColor: '',
         scale: 100,
 
+        updateElement(ev) {
+            this.report.elements[this.currentElementIdx] = ev.element
+        },
+
         addItem(type) {
             this.report.elements.push({
                 type,
@@ -49,8 +53,8 @@ document.addEventListener('alpine:init', () => {
             const target = this.report.elements[data.idx]
 
             const clientRect = ev.target.getBoundingClientRect()
-            target.x = (ev.clientX - clientRect.left - data.offsetX) / (this.scale/100)
-            target.y = (ev.clientY - clientRect.top - data.offsetY) / (this.scale/100)
+            target.x = (ev.clientX - clientRect.left - data.offsetX) / (this.scale / 100)
+            target.y = (ev.clientY - clientRect.top - data.offsetY) / (this.scale / 100)
         },
     }))
 })

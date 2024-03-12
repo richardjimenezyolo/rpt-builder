@@ -55,7 +55,7 @@
 
     </div>
 
-    <rpt-sidebar-properties :element="JSON.stringify(report.elements[currentElementIdx])" :idx="currentElementIdx"></rpt-sidebar-properties>
+    <rpt-sidebar-properties :element="JSON.stringify(report.elements[currentElementIdx])" :idx="currentElementIdx" @update="updateElement"></rpt-sidebar-properties>
 </main>
 
 <script>

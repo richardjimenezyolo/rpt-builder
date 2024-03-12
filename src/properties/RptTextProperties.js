@@ -9,6 +9,7 @@ class RptTextProperties extends HTMLElement {
     }
 
     whenChange(ev) {
+        ev.stopPropagation()
         this.element.properties[ev.target.name] = ev.target.value
     }
 
