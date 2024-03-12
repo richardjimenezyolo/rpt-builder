@@ -1,4 +1,5 @@
 import './properties/RptTextProperties'
+import './properties/RptTableProperties.js'
 
 class RptSidebarProperties extends HTMLElement {
 
@@ -37,7 +38,9 @@ class RptSidebarProperties extends HTMLElement {
 
   attributeChangedCallback(name, oldVal, newVal) {
     this[name] = JSON.parse(newVal)
-    this.render()
+    setTimeout(() => {
+        this.render()
+    })
   }
 
 }

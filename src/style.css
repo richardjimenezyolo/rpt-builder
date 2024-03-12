@@ -7,6 +7,10 @@ body {
     transition: 0.5s;
 }
 
+summary {
+    user-select: none;
+}
+
 /* Light color scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"] {
@@ -60,9 +64,18 @@ main {
     font-weight: bold;
 }
 
+.properties-container{
+    overflow-y: auto;
+    font-size: 18px;
+}
 .properties-container div {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 0 10px !important;
+}
+
+.properties-container summary {
+    padding: 0 10px !important;
 }
 
 .properties-container input[type="color"],
