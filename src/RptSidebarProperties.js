@@ -12,7 +12,6 @@ class RptSidebarProperties extends HTMLElement {
     }
 
     connectedCallback() {
-
         this.render()
     }
 
@@ -36,8 +35,6 @@ class RptSidebarProperties extends HTMLElement {
 
         this.style.flexGrow = 1
         this.style.paddingLeft = '10px'
-
-        console.log(this.element.type)
         this.innerHTML = `
             <div class="pico side-bar properties-container">
                 <div>
