@@ -14,6 +14,7 @@ export default class RptElement extends HTMLDivElement {
         this.addEventListener('dragstart', this.getPosition);
         this.addEventListener('focus', this.onFocus)
         this.addEventListener('blur', this.onBlur)
+        this.addEventListener('focusout', this.onBlur)
         this.addEventListener('keyup', this.onKeyUp)
     }
 

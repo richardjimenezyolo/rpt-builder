@@ -1,21 +1,68 @@
+import './properties/RptTextProperties'
+import './properties/RptTableProperties.js'
+
 class RptSidebarProperties extends HTMLElement {
+
+    static oldIdx = 0
+
+    constructor() {
+        super()
+        this.element = {}
+        this.addEventListener('input', this.whenPositionChange)
+    }
+
     connectedCallback() {
+        this.render()
+    }
+
+    /**
+     *
+     * @param {InputEvent} ev
+     */
+    whenPositionChange(ev) {
+        this.element[ev.target.name] = +ev.target.value
+        const event = new Event('update')
+        event.element = this.element
+        this.dispatchEvent(event)
+    }
+
+    render() {
+        this.style.maxWidth = '20%'
+        if (this.oldIdx == this.idx) {
+            this.oldIdx = this.idx
+            return
+        }
+
         this.style.flexGrow = 1
         this.style.paddingLeft = '10px'
-
         this.innerHTML = `
-        <div class="container-sidebar" style="height: 100%">
-            <div class="pico side-bar">
-                <p x-text="type"></p>
-                <details :open="showTextAccordion" x-show="type === 'rpt-text'">
-                    <summary class="accordion-rpt">Texto</summary>
-                    <div class="container-input-color-rpt">
-                        <input x-mode="textColor" type="color" @input="updateProperties">
+            <div class="pico side-bar properties-container">
+                <div>
+                    <div>
+                        <label for="x">Posición X</label>
+                        <input name="x" value="${this.element.x}" type="number"  style="font-size: 16px; padding: 0; width: 30%; height: 30px" >
                     </div>
-                </details>
+                    <div>
+                        <label for="y">Posición Y</label>
+                        <input name="y" value="${this.element.y}" type="number"  style="font-size: 16px; padding: 0; width: 30%; height: 30px" >
+                    </div>
+                </div>
+
+                <${this.element.type}-properties />
             </div>
-        </div>
-`
+          `
+        this.oldIdx = this.idx
     }
+
+    static observedAttributes = ['element', 'idx']
+
+    attributeChangedCallback(name, oldVal, newVal) {
+        this[name] = JSON.parse(newVal)
+        setTimeout(() => {
+            this.render()
+        })
+    }
+
 }
+
 window.customElements.define('rpt-sidebar-properties', RptSidebarProperties)

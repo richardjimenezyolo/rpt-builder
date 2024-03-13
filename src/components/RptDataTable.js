@@ -13,7 +13,7 @@ class RptDataTable extends RptElement {
             return
         }
 
-        this.style.fontSize = '9px'
+        this.style.fontSize = '7px'
         const headers = this.element.value.headers.map(el => el.text)
 
         this.innerHTML = `

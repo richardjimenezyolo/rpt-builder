@@ -9,26 +9,31 @@ document.addEventListener('alpine:init', () => {
         offsetX: 0,
         offsetY: 0,
         showModal: false,
-        currentElement: 0,
+        currentElementIdx: 0,
         showSidebar: false,
         type: '',
         report: initialTemplate,
-        selectedElement: null,
         showTextAccordion: false,
         textColor: '',
+        scale: 100,
+
+        updateElement(ev) {
+            this.report.elements[this.currentElementIdx] = ev.element
+        },
 
         addItem(type) {
             this.report.elements.push({
                 type,
                 x: 0,
                 y: 0,
-                value: ''
+                value: '',
+                properties: {}
             })
             this.showModal = false
         },
 
         destroy(ev) {
-            this.report.elements.splice(ev.elementIdx,1)
+            this.report.elements.splice(ev.elementIdx, 1)
         },
 
         allowDrop(ev) {
@@ -36,20 +41,8 @@ document.addEventListener('alpine:init', () => {
         },
 
         onFocus(ev) {
-            this.showSidebar = true
-            this.currentElement = ev.target
-            console.log(ev.target)
-            this.Sidebar()
-        },
-
-        updateProperties(event) {
-            const idx = +this.currentElement.idx
-            this.report.elements[idx].properties.color = event.target.value
-        },
-
-        Sidebar(){
-          const idx = parseInt( this.currentElement.idx)
-          this.type =  this.report.elements[idx].type
+            this.currentElementIdx = +ev.target.idx
+            Alpine.store('properties', this.report.elements[ev.target.idx])
         },
 
         /**
@@ -60,8 +53,8 @@ document.addEventListener('alpine:init', () => {
             const target = this.report.elements[data.idx]
 
             const clientRect = ev.target.getBoundingClientRect()
-            target.x =  ev.clientX - clientRect.left - data.offsetX
-            target.y =  ev.clientY - clientRect.top - data.offsetY
+            target.x = (ev.clientX - clientRect.left - data.offsetX) / (this.scale / 100)
+            target.y = (ev.clientY - clientRect.top - data.offsetY) / (this.scale / 100)
         },
     }))
 })

@@ -11,25 +11,27 @@
         {
             "type": "rpt-text",
             "value": "Reporte de asistencia",
-            "x": 362,
-            "y": 52.390625,
+            "x": 247,
+            "y": 44.383331298828125,
             "properties": {
-                "color": "black"
+                "color": "#a51d2d",
+                "size": "30"
             }
         },
         {
             "type": "rpt-text",
-            "x": 746,
-            "y": 11.453125,
+            "x": 686,
+            "y": 8.45001220703125,
             "value": "Fecha impresión",
             "properties": {
-                "color": "black"
+                "color": "black",
+                "size": "12"
             }
         },
         {
             "type": "rpt-img",
-            "x": 994,
-            "y": 4.9375,
+            "x": 903,
+            "y": 3.9333343505859375,
             "value": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE3klEQVR4nO2a24vVVRTHP+OoM17IGZ0ms9LulJfpgn9CkQpTGr2UBUGUPdVMPfQQpBARZi/VUPRST5HUS2Z3JEaILK28PNSkU1FeKKx5CJpRx/HEgu+GxZk5v9/e+5wzSfiFwznwW9+192/vtdZea+0DF/D/RQdwJ/ACsBP4ATgJjOljv78H3pdML7CA8wRtwEbgE+AsUEn8GOdj4D7pmna0A08Ax92kTgGDwGZgA7ACWCTZdv1eCdwtmd3Aacc/BvRJdlqwFhh2E/gW2AR0ZujqFPc7p+8IcAdNhK3Uq25AG3xNg3S3aIEOOP2vNMPcLgG+0QCjwONAa6MHAWYC/QoONtZeoLtRyq/UdpviIWBVifx1wDPALuCEfOcfRbGXgGURY94EHNaYhzWHuncivMRXctgie38TmCiJVH8DDwAXlYzdBXztXqa7Hp8I5rQHmF8ge6lWPEz0Ddn8DcBcfSxiPe/C9Jh2yJ7Vwnz3MntzfeY1Z06LShx10EWwpSV6H9S5c0acL0om2OXMbCD1JdY5xy7zibske7LkhauxUmeHcZ8qkb3ZBYDo0DwH+EmkxyLk35KsHZCp6BX31wjZfucvUSb2pDsnYkLsX5K/hnS0aCeNvyQiNB+UrIX/Ugc/nrCF85yD5+Jz6bg9weSPle3K/RK0aBWDKyR/lHzslA4zs5gdDOnMvUWCn0no4chJdLsVykUYMzbdeVTyHxUdaGd1ElttEYNWHYBntFo5COdPT6T8QmXN47XqmfVSaDabgt/Eu4x0zNMinFa0jMXuInN8UQ8tT0rBe+LZeZKK28T9MpG3RTyrNCfhg8wJPSeefafiWXEtVUnBBvGsbJ6EkAbcmKBwhiuyniYdYWWHpSsWK1z6NAl/6mFKmrFEnBHyMSIdlnjGosulRZMQ6ufZCQpnKx+bSIh01ZFyQjpmJfDaXJ+gIS+CuiAV+djqBN5q55c1z4ScFwmmZXE6BbcAf4i7NYG3VZzfpSMFhaYVnN2KoVTcKq41D2IREsDUlzAsL3L23PCLIs5R8a0yLMNal77nZATrxbc8rWEHYkCf+D+XOH6HZCri5GBz0YGYm6IEzHL19ZRbLgy5GjwlUnkMFqUoOUljrbTeQmothC6LyeZgYVnS6FPqRzIHmSv+uQKZc5Ip6p4UYVNMyA6FlRUvOVjgWj21cEoyOVcKLa6wsg5+Yal7IrHQ8bhWXDuTaiGcVyabinWxpa5vPhxQwR+Ly9WNrCi1r4UdrulnnFjMBA7FNh+q20Ex4XGVGmejLvwWOfJSF35Hxe1pRjvIb+FYjUG6tSr7XE/XotH2yBTHZN6u6hPv12QX12hqJzfoqlumPyq3CR2/7Qp9YQIjWlWrEVJhnJddb6yiI+BdpT1o7CO5LdOpmtgDbgXHVZ3d06DLmDZdye1wizShi6U99TaxDRdrR7z5vANcT/OwDHi9ateHdcVRF652zv9LQtumHvS4gGAvcVWjFC/WlUFFt0/9Tbp6a1UzfNSZU907MZXPhAAQTv9G3r5aar/f6R9o9t37VNfTD2Ummh3iVl9Pr2GaMEcmENKZijqGu9Ti6VVbqVNF1wz9Xq5nWyQbbq0qugXom84/DHi0K9H8tM6/cGz8r/7CUctMrEzeBnyoAmpEYXRcv4f0bJtkc+ueC+B8x78fHcKd4U6+1gAAAABJRU5ErkJggg=="
         },
         {
@@ -38,19 +40,58 @@
             "y": 141,
             "value": {
                 "headers": [
-                    { "text": "No. Carnet", "value": "carnet" },
-                    { "text": "Nombre", "value": "nombre" },
-                    { "text": "Puesto", "value": "puesto" },
-                    { "text": "Horario", "value": "horario" },
-                    { "text": "Departamento", "value": "departamento" },
-                    { "text": "Hora de Entrada", "value": "entrada" },
-                    { "text": "Entrada lugar Trabajo", "value": "entrada_area_trabajo" },
-                    { "text": "Hora de Salida", "value": "salida" },
-                    { "text": "Tardanza y/o Ausencia", "value": "tipo_falta" },
-                    { "text": "Razón", "value": "razon_id" },
-                    { "text": "Aprobar o Rechazar", "value": "requiere_aprobacion" },
-                    { "text": "Razón rechazo", "value": "rechazo" },
-                    { "text": "Confirmado por", "value": "encargado" }
+                    {
+                        "text": "No. Carnet",
+                        "value": "carnet"
+                    },
+                    {
+                        "text": "Nombre",
+                        "value": "nombre"
+                    },
+                    {
+                        "text": "Puesto",
+                        "value": "puesto"
+                    },
+                    {
+                        "text": "Horario",
+                        "value": "horario"
+                    },
+                    {
+                        "text": "Departamento",
+                        "value": "departamento"
+                    },
+                    {
+                        "text": "Hora de Entrada",
+                        "value": "entrada"
+                    },
+                    {
+                        "text": "Entrada lugar Trabajo",
+                        "value": "entrada_area_trabajo"
+                    },
+                    {
+                        "text": "Hora de Salida",
+                        "value": "salida"
+                    },
+                    {
+                        "text": "Tardanza y/o Ausencia",
+                        "value": "tipo_falta"
+                    },
+                    {
+                        "text": "Razón",
+                        "value": "razon_id"
+                    },
+                    {
+                        "text": "Aprobar o Rechazar",
+                        "value": "requiere_aprobacion"
+                    },
+                    {
+                        "text": "Razón rechazo",
+                        "value": "rechazo"
+                    },
+                    {
+                        "text": "Confirmado por",
+                        "value": "encargado"
+                    }
                 ]
             }
         }
