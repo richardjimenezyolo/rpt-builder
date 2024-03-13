@@ -15,7 +15,7 @@ document.addEventListener('alpine:init', () => {
         report: initialTemplate,
         showTextAccordion: false,
         textColor: '',
-        scale: 100,
+        scale: 50,
 
         updateElement(ev) {
             this.report.elements[this.currentElementIdx] = ev.element

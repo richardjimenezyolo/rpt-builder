@@ -11,10 +11,20 @@ class RptTableProperties extends HTMLElement {
         this.addEventListener('dragstart', this.dragstart)
         this.addEventListener('dragover', this.dragover)
         this.addEventListener('dragend', this.dragend)
+        this.addEventListener('keydown', this.handleDelete)
     }
 
     connectedCallback() {
         this.render()
+    }
+
+    handleDelete(ev) {
+        if (ev.key === 'Delete') {
+            const idx = +ev.target.id.split('-')[1]
+            this.element.value.headers.splice(idx, 1)
+            this.render()
+        }
+
     }
 
     /**
@@ -48,20 +58,13 @@ class RptTableProperties extends HTMLElement {
             this.render()
             return
         }
-
-        if (ev.target?.name?.split('-')[1] === 'del') {
-            const [idx] = ev.target.name.split('-')
-            this.element.value.headers.splice(idx, 1)
-            this.render()
-            return
-        }
     }
 
     /**
      *
      * @param { DragEvent } event
      */
-    dragstart(event){
+    dragstart(event) {
         const [idx] = event.target.id.split('-')
         event.dataTransfer.setData("text", event.target.id);
     }
@@ -70,14 +73,14 @@ class RptTableProperties extends HTMLElement {
      *
      * @param {DragEvent} event
      */
-    dragover(event){
+    dragover(event) {
         const target = event.originalTarget;
         this.targetObjetive = target
         const [idx, detail] = target.id.split('-')
         // console.log(idx, detail)
 
-        if (detail === 'detail'){
-            this.clearColorsTargeDiv()
+        if (detail === 'detail') {
+            this.clearColorsTargetDiv()
 
             const topElement = target.previousElementSibling
             const bottomElement = target.nextElementSibling
@@ -86,12 +89,12 @@ class RptTableProperties extends HTMLElement {
             topElement.style.backgroundColor = 'lightblue'
         }
 
-        if (detail === 'targetDrop'){
-           this.clearColorsTargeDiv()
+        if (detail === 'targetDrop') {
+            this.clearColorsTargetDiv()
 
             const second = target?.nextElementSibling?.nextElementSibling
             target.style.backgroundColor = 'lightblue'
-            if (second){
+            if (second) {
                 second.style.backgroundColor = 'lightblue'
             }
         }
@@ -102,13 +105,13 @@ class RptTableProperties extends HTMLElement {
      * @param {DragEvent} event
      */
 
-    dragend(event){
-        this.clearColorsTargeDiv()
+    dragend(event) {
+        this.clearColorsTargetDiv()
         const [idx, detail] = event.dataTransfer.getData("text").split('-');
         const [idxTarget, targetDrop] = this.targetObjetive.id.split('-')
-        if (targetDrop === 'targetDrop'){
+        if (targetDrop === 'targetDrop') {
 
-            if (this.targetObjetive.previousElementSibling.id === "headers"){
+            if (this.targetObjetive.previousElementSibling.id === "headers") {
                 const elem = this.element.value.headers[parseInt(idx)]
                 this.element.value.headers.splice(parseInt(idx), 1)
                 this.element.value.headers.unshift(elem)
@@ -118,15 +121,14 @@ class RptTableProperties extends HTMLElement {
 
             const [previousIdx, previousDetail] = this.targetObjetive.previousElementSibling.id.split('-')
             //Todo hacer que se haga el drag and drop en el ultimo div
-            if (previousDetail === "detail"){
+            if (previousDetail === "detail") {
                 const elem = this.element.value.headers[parseInt(idx)]
                 this.element.value.headers.splice(parseInt(idx), 1)
 
-                if (parseInt(previousIdx) < parseInt(idx)){
-                    this.element.value.headers.splice(parseInt(previousIdx) + 1,0, elem)
-                }
-                else{
-                    this.element.value.headers.splice(parseInt(previousIdx),0, elem)
+                if (parseInt(previousIdx) < parseInt(idx)) {
+                    this.element.value.headers.splice(parseInt(previousIdx) + 1, 0, elem)
+                } else {
+                    this.element.value.headers.splice(parseInt(previousIdx), 0, elem)
                 }
 
                 this.render()
@@ -136,8 +138,8 @@ class RptTableProperties extends HTMLElement {
         this.render()
     }
 
-    clearColorsTargeDiv(){
-        const divTargets = document.querySelectorAll('.targetDiv')
+    clearColorsTargetDiv() {
+        const divTargets = this.querySelectorAll('.targetDiv')
         divTargets.forEach((elem) => {
             elem.style.backgroundColor = ''
         })
@@ -159,9 +161,6 @@ class RptTableProperties extends HTMLElement {
                         <div>
                             <p>Valor</p>
                             <input name="${idx}-value" type="text" value="${el.value}" />
-                        </div>
-                        <div>
-                            <button name="${idx}-del" >del</button>
                         </div>
                     </details>`).join('')}
                     <div style="width: 100%; height: 20px;" class="targetDiv"></div>
