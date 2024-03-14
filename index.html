@@ -50,7 +50,7 @@
             </template>
         </div>
     </div>
-    <textarea :value="JSON.stringify(report)"></textarea>
+<!--    <textarea :value="JSON.stringify(report)"></textarea>-->
 
     <rpt-sidebar-properties :element="JSON.stringify(report.elements[currentElementIdx])" :idx="currentElementIdx" @update="updateElement"></rpt-sidebar-properties>
 </main>
