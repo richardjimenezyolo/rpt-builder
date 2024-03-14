@@ -3,9 +3,9 @@ body {
     height: 100vh;
 }
 
-* {
-    transition: 0.5s;
-}
+/** {*/
+/*    transition: 0.5s;*/
+/*}*/
 
 summary {
     user-select: none;

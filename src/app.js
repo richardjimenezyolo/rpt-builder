@@ -15,10 +15,18 @@ document.addEventListener('alpine:init', () => {
         report: initialTemplate,
         showTextAccordion: false,
         textColor: '',
-        scale: 50,
+        scale: 100,
 
         updateElement(ev) {
             this.report.elements[this.currentElementIdx] = ev.element
+        },
+
+        updateElementPosition(ev) {
+            const element = this.report.elements[ev.idx]
+            element.x = ev.x
+            element.y = ev.y
+            console.clear()
+            console.table(this.report.elements.map((el, idx) => ({idx, type: el.type, x: el.x, y: el.y})))
         },
 
         addItem(type) {
@@ -43,18 +51,6 @@ document.addEventListener('alpine:init', () => {
         onFocus(ev) {
             this.currentElementIdx = +ev.target.idx
             Alpine.store('properties', this.report.elements[ev.target.idx])
-        },
-
-        /**
-         * @param {DragEvent} ev
-         **/
-        onDrop(ev) {
-            const data = JSON.parse(ev.dataTransfer.getData('text'))
-            const target = this.report.elements[data.idx]
-
-            const clientRect = ev.target.getBoundingClientRect()
-            target.x = (ev.clientX - clientRect.left - data.offsetX) / (this.scale / 100)
-            target.y = (ev.clientY - clientRect.top - data.offsetY) / (this.scale / 100)
         },
     }))
 })

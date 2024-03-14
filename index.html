@@ -42,18 +42,15 @@
             class="report-container"
             :style="`min-width: ${report.width}; max-width: ${report.width}; min-height: ${report.height}; max-height: ${report.height}; scale: ${scale/100}`"
             @dragover="allowDrop(event)"
-            @drop="onDrop(event)"
         >
             <template x-for="(i, idx) in report.elements" :key="idx">
                 <div
-                    x-html="`<div is='${i.type}' x-model='i.value' :element='JSON.stringify(i)' :idx='idx' @delete='destroy' @focus='onFocus'></div>`">
+                    x-html="`<div is='${i.type}' x-model='i.value' :element='JSON.stringify(i)' :idx='idx' @delete='destroy' :scale='scale' @focus='onFocus' @input='updateElementPosition'></div>`">
                 </div>
             </template>
         </div>
-
-<!--        <textarea :value="JSON.stringify(report)"></textarea>-->
-
     </div>
+    <textarea :value="JSON.stringify(report)"></textarea>
 
     <rpt-sidebar-properties :element="JSON.stringify(report.elements[currentElementIdx])" :idx="currentElementIdx" @update="updateElement"></rpt-sidebar-properties>
 </main>
