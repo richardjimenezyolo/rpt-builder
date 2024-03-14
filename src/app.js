@@ -45,6 +45,31 @@ document.addEventListener('alpine:init', () => {
             Alpine.store('properties', this.report.elements[ev.target.idx])
         },
 
+        //Todo convertir estos dos metodos en uno mismo ya que se repite lo mismo
+        openSideLeft(event){
+            event.preventDefault()
+            const sideLeft = document.querySelector('#side-left')
+           if ( sideLeft.classList.contains('open-side-left')){
+               sideLeft.classList.remove('open-side-left')
+               sideLeft.classList.add('close-side-left')
+           } else {
+               sideLeft.classList.add('open-side-left')
+               sideLeft.classList.remove('close-side-left')
+           }
+        },
+        openSideRight(event){
+            event.preventDefault()
+            console.log(event)
+            const sideRight = document.querySelector('#side-right')
+            if ( sideRight.classList.contains('open-side-right')){
+                sideRight.classList.remove('open-side-right')
+                sideRight.classList.add('close-side-right')
+            } else {
+                sideRight.classList.add('open-side-right')
+                sideRight.classList.remove('close-side-right')
+            }
+        },
+
         /**
          * @param {DragEvent} ev
          **/

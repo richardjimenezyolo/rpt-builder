@@ -67,6 +67,8 @@ main {
 .properties-container{
     overflow-y: auto;
     font-size: 18px;
+    position: relative;
+    z-index: 20;
 }
 .properties-container div {
     display: flex;
@@ -95,3 +97,61 @@ main {
     line-height: 200px;
     transition: background-color 0.3s ease;
 }
+
+.item-side-left{
+    padding-top: 60px;
+}
+
+.item-side-right{
+    padding-top: 60px;
+}
+
+.close-side-left {
+    width: 0;
+    display: none;
+}
+
+.close-side-right{
+    width: 0;
+    display: none;
+}
+
+.open-side-left {
+    width: 25%;
+    display: block;
+    animation: open-side 1s ;
+    transition: 1.5s ease-in ;
+}
+
+.open-side-right {
+    width: 100%;
+    display: block;
+    animation: open-side-right 1s ;
+    transition: 1.5s ease-in-out ;
+}
+
+@keyframes open-side {
+    0%{
+        width: 0;
+        opacity: 0;
+    }
+
+    100%{
+        width: 25%;
+        opacity: 100%;
+    }
+}
+
+@keyframes open-side-right {
+    0%{
+        width: 0;
+        opacity: 0;
+    }
+
+    100%{
+        width: 100%;
+        opacity: 100%;
+    }
+}
+
+
