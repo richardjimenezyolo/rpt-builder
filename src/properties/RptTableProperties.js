@@ -10,7 +10,7 @@ class RptTableProperties extends HTMLElement {
         this.addEventListener('click', this.handleClick)
         this.addEventListener('dragstart', this.dragstart)
         this.addEventListener('dragover', this.dragover)
-        this.addEventListener('dragend', this.dragend)
+        this.addEventListener('drop', this.dragend)
         this.addEventListener('keydown', this.handleDelete)
     }
 
@@ -74,10 +74,9 @@ class RptTableProperties extends HTMLElement {
      * @param {DragEvent} event
      */
     dragover(event) {
-        const target = event.originalTarget;
+        const target = event.target;
         this.targetObjetive = target
         const [idx, detail] = target.id.split('-')
-        // console.log(idx, detail)
 
         if (detail === 'detail') {
             this.clearColorsTargetDiv()
@@ -168,6 +167,10 @@ class RptTableProperties extends HTMLElement {
                     <button name="add">Agregar Columna</button>
                 </details>
         `
+
+        this.querySelectorAll('div.targetDiv').forEach(el => {
+            el.ondragover = (ev) => ev.preventDefault()
+        })
     }
 
 }
