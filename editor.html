@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark"/>
+
+    <link rel="stylesheet" href="/public/pico.css"/>
+    <link rel="stylesheet" href="/public/style.css">
+
+    <script src="./src/app.js" type="module" defer></script>
+    <script defer src="/public/alpine.js"></script>
+
+    <title>Rpt builder</title>
+</head>
+
+<body x-data="main">
+<main style="display: flex; justify-content: space-between; height: 100%;">
+
+    <div style="padding-right: 1rem; width: 20%;">
+        <div class="pico side-bar">
+            <select x-model="scale">
+                <option value="100">100%</option>
+                <option value="75">75%</option>
+                <option value="50">50%</option>
+                <option value="25">25%</option>
+            </select>
+
+            <p>
+                Select the type of element to add:
+            </p>
+            <ul>
+                <li><a href="#" @click="addItem('rpt-text')">Text</a></li>
+                <li><a href="#" @click="addItem('rpt-img')">Image</a></li>
+                <li><a href="#" @click="addItem('rpt-table')">table</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <template x-if="report">
+        <div class="pico" style="padding-top: 1rem; display: flex; justify-content: center; align-items: center; width: 60%;">
+            <div
+                class="report-container"
+                :style="`min-width: ${report.width}; max-width: ${report.width}; min-height: ${report.height}; max-height: ${report.height}; scale: ${scale/100}`"
+                @dragover="allowDrop(event)"
+            >
+                <template x-for="(i, idx) in report.elements" :key="idx">
+                    <div
+                        x-html="`<div is='${i.type}' x-model='i.value' :element='JSON.stringify(i)' :idx='idx' @delete='destroy' :scale='scale' @focus='onFocus' @input='updateElementPosition'></div>`">
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+<!--    <textarea :value="JSON.stringify(report)"></textarea>-->
+
+    <template x-if="report">
+        <rpt-sidebar-properties :element="JSON.stringify(report.elements[currentElementIdx])" :idx="currentElementIdx" @update="updateElement"></rpt-sidebar-properties>
+    </template>
+</main>
+
+<script>
+    function changeTheme() {
+        const theme = document.querySelector('html').getAttribute('data-theme') === 'light' ? 'dark' : 'light'
+        document.querySelector('html').setAttribute('data-theme', theme)
+    }
+</script>
+</body>
+
+</html>

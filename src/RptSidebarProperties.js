@@ -1,4 +1,4 @@
-import './properties/RptTextProperties'
+import './properties/RptTextProperties.js'
 import './properties/RptTableProperties.js'
 
 class RptSidebarProperties extends HTMLElement {

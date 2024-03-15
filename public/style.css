@@ -36,6 +36,7 @@ main {
 .report-container {
     background: white;
     position: relative;
+    transition: 0.5s;
 }
 
 .side-bar {
