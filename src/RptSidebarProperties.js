@@ -36,7 +36,7 @@ class RptSidebarProperties extends HTMLElement {
         this.style.flexGrow = 1
         this.style.paddingLeft = '10px'
         this.innerHTML = `
-            <div class="pico side-bar properties-container">
+            <div class="pico side-bar properties-container" id="side-right">
                 <div class="container-properties">
                     <div class="row-properties">
                         <label for="x">Posición X</label>

@@ -73,20 +73,53 @@ document.addEventListener('alpine:init', () => {
         },
         onResize(event){
             const contenedor = document.querySelector('.main')
-            if (contenedor.offsetWidth <= 882){
+            console.log(contenedor.offsetWidth)
+            if (contenedor.offsetWidth <= 656){
                 Alpine.store('scale', 25)
             }
 
-            if (contenedor.offsetWidth > 882 && contenedor.offsetWidth <= 1382){
+            if (contenedor.offsetWidth > 656 && contenedor.offsetWidth <= 1382){
                 Alpine.store('scale', 50)
+                this.removeClass()
             }
 
             if (contenedor.offsetWidth > 1382 && contenedor.offsetWidth < 1540){
                 Alpine.store('scale', 75)
+                this.removeClass()
             }
 
             if (contenedor.offsetWidth > 1540){
                 Alpine.store('scale', 100)
+                this.removeClass()
+            }
+        },
+        openSideLeft(event){
+            event.preventDefault()
+            const sideLeft = document.querySelector('#side-left')
+            if ( sideLeft.classList.contains('open-side-left')){
+                sideLeft.classList.remove('open-side-left')
+            } else {
+                sideLeft.classList.add('open-side-left')
+            }
+        },
+        openSideRight(event){
+            event.preventDefault()
+            const sideRight = document.querySelector('#side-right')
+            if ( sideRight.classList.contains('open-side-right')){
+                sideRight.classList.remove('open-side-right')
+            } else {
+                sideRight.classList.add('open-side-right')
+            }
+        },
+
+        removeClass(){
+            const sideRight = document.querySelector('#side-right')
+            const sideLeft = document.querySelector('#side-left')
+            if (sideRight.classList.contains('open-side-right')){
+                sideRight.classList.remove('open-side-right')
+            }
+            if (sideLeft.classList.contains('open-side-left')){
+                sideLeft.classList.remove('open-side-left')
             }
         }
     }))
