@@ -5,6 +5,7 @@ import './RptSidebarProperties.js'
 const fs = require('fs')
 
 document.addEventListener('alpine:init', () => {
+    Alpine.store('scale', 25)
     Alpine.data('main', () => ({
         offsetX: 0,
         offsetY: 0,
@@ -32,6 +33,7 @@ document.addEventListener('alpine:init', () => {
                 })
             }
 
+            window.onresize = this.onResize
         },
 
         updateElement(ev) {
@@ -69,7 +71,24 @@ document.addEventListener('alpine:init', () => {
             this.currentElementIdx = +ev.target.idx
             Alpine.store('properties', this.report.elements[ev.target.idx])
         },
+        onResize(event){
+            const contenedor = document.querySelector('.main')
+            if (contenedor.offsetWidth <= 882){
+                Alpine.store('scale', 25)
+            }
 
+            if (contenedor.offsetWidth > 882 && contenedor.offsetWidth <= 1382){
+                Alpine.store('scale', 50)
+            }
+
+            if (contenedor.offsetWidth > 1382 && contenedor.offsetWidth < 1540){
+                Alpine.store('scale', 75)
+            }
+
+            if (contenedor.offsetWidth > 1540){
+                Alpine.store('scale', 100)
+            }
+        }
     }))
 })
 

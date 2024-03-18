@@ -96,3 +96,34 @@ main {
     line-height: 200px;
     transition: background-color 0.3s ease;
 }
+
+.container-properties {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    animation: animation-properties ease 0.5s;
+}
+
+.row-properties {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+input[class="title-header"], input[class="value-header"], .headers, .row-properties{
+    font-size: 0.8rem;
+}
+
+input[class="title-header"], input[class="value-header"]{
+    width: 40%;
+    height: 30px;
+}
+
+@media screen and (max-width: 882px) {
+    .side-bar{
+        width: 200px;
+    }
+}

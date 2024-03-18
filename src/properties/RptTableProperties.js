@@ -147,7 +147,7 @@ class RptTableProperties extends HTMLElement {
     render() {
         this.innerHTML = `
                 <p>${this.element.type}</p>
-                <details ${this.isHeaderDetailsOpen ? 'open' : ''}>
+                <details ${this.isHeaderDetailsOpen ? 'open' : ''} class="headers">
                     <summary id="headers">Cabeceras</summary>
                     ${this.element.value?.headers?.map((el, idx) => `
                     <div style="width: 100%; height: 20px;" id="${idx}-targetDrop" class="targetDiv"></div>
@@ -155,11 +155,11 @@ class RptTableProperties extends HTMLElement {
                         <summary id="title-${idx}">${el.text}</summary>
                         <div>
                             <p>Titulo:</p>
-                            <input name="${idx}-text" type="text" value="${el.text}" />
+                            <input name="${idx}-text" type="text" class="title-header" value="${el.text}" />
                         </div>
                         <div>
                             <p>Valor</p>
-                            <input name="${idx}-value" type="text" value="${el.value}" />
+                            <input name="${idx}-value" type="text" class="value-header" value="${el.value}" />
                         </div>
                     </details>`).join('')}
                     <div style="width: 100%; height: 20px;" class="targetDiv"></div>
