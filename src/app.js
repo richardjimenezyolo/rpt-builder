@@ -15,10 +15,11 @@ document.addEventListener('alpine:init', () => {
         report: null,
         showTextAccordion: false,
         textColor: '',
-        scale: 25,
+        scale: 50,
         path: null,
 
         init() {
+            nw.Window.get().setMinimumSize(960, 520)
             const params = new URLSearchParams(window.location.search)
             this.path = params.get('path')
 
