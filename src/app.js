@@ -19,7 +19,6 @@ document.addEventListener('alpine:init', () => {
         path: null,
 
         init() {
-            nw.Window.get().setMinimumSize(960, 520)
             const params = new URLSearchParams(window.location.search)
             this.path = params.get('path')
 
@@ -33,6 +32,10 @@ document.addEventListener('alpine:init', () => {
                 })
             }
 
+            window.onresize = (ev) => {
+                this.scale = 50
+            }
+            this.registerShortcuts()
         },
 
         updateElementProperties(ev) {
@@ -81,6 +84,25 @@ document.addEventListener('alpine:init', () => {
             this.currentElementIdx = +ev.target.idx
             Alpine.store('properties', this.report.elements[ev.target.idx])
         },
+
+        registerShortcuts() {
+            window.onkeyup = ev => {
+                if (ev.key === 's' && ev.ctrlKey) {
+                    this.save()
+                }
+            }
+        },
+
+        save() {
+            if (this.path) {
+                console.log('Saving...')
+                fs.writeFile(this.path, JSON.stringify(this.report), err => {
+                    if (err) {
+                        console.error(err)
+                    }
+                })
+            }
+        }
 
     }))
 })
