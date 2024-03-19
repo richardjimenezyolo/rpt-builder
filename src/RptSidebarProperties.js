@@ -37,16 +37,14 @@ class RptSidebarProperties extends HTMLElement {
         this.style.paddingLeft = '10px'
         this.innerHTML = `
             <div class="pico side-bar properties-container">
-                <div>
-                    <div>
-                        <label for="x">Posición X</label>
-                        <input name="x" value="${this.element.x}" type="number"  style="font-size: 16px; padding: 0; width: 30%; height: 30px" >
-                    </div>
-                    <div>
-                        <label for="y">Posición Y</label>
-                        <input name="y" value="${this.element.y}" type="number"  style="font-size: 16px; padding: 0; width: 30%; height: 30px" >
-                    </div>
-                </div>
+            <div>
+                <label for="x">Posición X</label>
+                <input name="x" value="${this.element.x}" type="number"  style="font-size: 16px; padding: 0; width: 30%; height: 30px" >
+            </div>
+            <div>
+                <label for="y">Posición Y</label>
+                <input name="y" value="${this.element.y}" type="number"  style="font-size: 16px; padding: 0; width: 30%; height: 30px" >
+            </div>
 
                 <${this.element.type}-properties />
             </div>
