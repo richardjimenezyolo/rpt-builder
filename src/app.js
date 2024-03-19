@@ -34,16 +34,27 @@ document.addEventListener('alpine:init', () => {
 
         },
 
-        updateElement(ev) {
+        updateElementProperties(ev) {
             this.report.elements[this.currentElementIdx] = ev.element
         },
 
-        updateElementPosition(ev) {
+        updateElement(ev) {
             const element = this.report.elements[ev.idx]
             element.x = ev.x
             element.y = ev.y
+
+            if (ev.value) {
+                element.value = ev.value
+            }
+
             console.clear()
-            console.table(this.report.elements.map((el, idx) => ({idx, type: el.type, x: el.x, y: el.y})))
+            console.table(this.report.elements.map((el, idx) => ({
+                idx,
+                type: el.type,
+                value: el.value,
+                x: el.x,
+                y: el.y
+            })))
         },
 
         addItem(type) {
