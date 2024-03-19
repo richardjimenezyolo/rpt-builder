@@ -2,6 +2,7 @@ import './components/RptImage.js'
 import './components/RptText.js'
 import './components/RptDataTable.js'
 import './RptSidebarProperties.js'
+
 const fs = require('fs')
 
 document.addEventListener('alpine:init', () => {
@@ -18,18 +19,41 @@ document.addEventListener('alpine:init', () => {
         scale: 50,
         path: null,
 
+        paperSizes: {
+            'letter': {
+                "width": "11in",
+                "height": "8.5in"
+            },
+            'a4': {
+                "width": "11in",
+                "height": "8.5in"
+            },
+        },
+
+        openFile(params) {
+            fs.readFile(this.path, 'utf-8', (err, data) => {
+                if (err) {
+                    alert(err)
+                    return
+                }
+                this.report = JSON.parse(data)
+            })
+        },
+
         init() {
             const params = new URLSearchParams(window.location.search)
             this.path = params.get('path')
 
             if (this.path) {
-                fs.readFile(this.path, 'utf-8', (err, data) => {
-                    if (err) {
-                        alert(err)
-                        return
-                    }
-                    this.report = JSON.parse(data)
-                })
+                this.openFile(params);
+            } else {
+                console.log(params.get('paper'))
+                console.log(this.paperSizes[params.get('paper')])
+
+                this.report = {
+                    ...this.paperSizes[params.get('paper')],
+                    elements: []
+                }
             }
 
             window.onresize = (ev) => {
@@ -101,6 +125,18 @@ document.addEventListener('alpine:init', () => {
                         console.error(err)
                     }
                 })
+                return
+            }
+
+            const input = document.createElement('input')
+
+            input.type = 'file'
+            input.setAttribute('nwsaveas', 'reporte.json')
+            input.click()
+            input.onchange = (ev) => {
+                console.log()
+                this.path = ev.target.value
+                this.save()
             }
         }
 
