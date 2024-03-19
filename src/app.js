@@ -57,7 +57,22 @@ document.addEventListener('alpine:init', () => {
             }
 
             window.onresize = (ev) => {
-                this.scale = 50
+                const contenedor = document.querySelector('main')
+                if (contenedor.offsetWidth <= 656) {
+                    this.scale = 25
+                }
+
+                if (contenedor.offsetWidth > 656 && contenedor.offsetWidth <= 1382) {
+                    this.scale = 50
+                }
+
+                if (contenedor.offsetWidth > 1382 && contenedor.offsetWidth < 1540) {
+                    this.scale = 75
+                }
+
+                if (contenedor.offsetWidth > 1540) {
+                    this.scale = 100
+                }
             }
             this.registerShortcuts()
         },
@@ -131,10 +146,9 @@ document.addEventListener('alpine:init', () => {
             const input = document.createElement('input')
 
             input.type = 'file'
-            input.setAttribute('nwsaveas', 'reporte.json')
+            input.setAttribute('nwsaveas', 'reporte.rpt')
             input.click()
             input.onchange = (ev) => {
-                console.log()
                 this.path = ev.target.value
                 this.save()
             }
