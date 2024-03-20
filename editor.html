@@ -48,6 +48,7 @@
                 class="report-container"
                 :style="`min-width: ${report.width}; max-width: ${report.width}; min-height: ${report.height}; max-height: ${report.height}; scale: ${scale/100}`"
                 @dragover="allowDrop(event)"
+                @click="clearSelection"
             >
                 <template x-for="(i, idx) in report.elements" :key="idx">
                     <div
@@ -59,13 +60,17 @@
     </template>
     <!--    <textarea :value="JSON.stringify(report)"></textarea>-->
 
-    <template x-if="report">
+    <template x-if="report && currentElementIdx">
         <rpt-sidebar-properties
             :element="JSON.stringify(report.elements[currentElementIdx])"
             :idx="currentElementIdx"
             @update="updateElementProperties"
         >
         </rpt-sidebar-properties>
+    </template>
+    <template x-if="currentElementIdx === null">
+        <div class="pico side-bar properties-container">
+        </div>
     </template>
 </main>
 

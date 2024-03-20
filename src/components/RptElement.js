@@ -20,6 +20,7 @@ export default class RptElement extends HTMLDivElement {
         this.addEventListener('blur', this.onBlur)
         this.addEventListener('focusout', this.onBlur)
         this.addEventListener('keyup', this.onKeyUp)
+        this.onclick = ev => ev.stopPropagation()
     }
 
     onKeyUp(ev) {

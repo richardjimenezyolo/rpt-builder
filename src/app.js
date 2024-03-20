@@ -119,6 +119,11 @@ document.addEventListener('alpine:init', () => {
             ev.preventDefault()
         },
 
+        clearSelection() {
+            console.log('clear')
+            this.currentElementIdx = null
+        },
+
         onFocus(ev) {
             this.currentElementIdx = +ev.target.idx
             Alpine.store('properties', this.report.elements[ev.target.idx])
