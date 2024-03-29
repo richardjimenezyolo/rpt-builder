@@ -60,7 +60,7 @@
     </template>
     <!--    <textarea :value="JSON.stringify(report)"></textarea>-->
 
-    <template x-if="report && currentElementIdx">
+    <template x-if="report && currentElementIdx !== null">
         <rpt-sidebar-properties
             :element="JSON.stringify(report.elements[currentElementIdx])"
             :idx="currentElementIdx"

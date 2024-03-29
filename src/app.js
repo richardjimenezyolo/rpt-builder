@@ -91,8 +91,7 @@ document.addEventListener('alpine:init', () => {
             }
 
             console.clear()
-            console.table(this.report.elements.map((el, idx) => ({
-                idx,
+            console.table(this.report.elements.map((el) => ({
                 type: el.type,
                 value: el.value,
                 x: el.x,

@@ -7,12 +7,15 @@ class RptText extends Element {
         super.connectedCallback()
         this.#intitialized = true
 
-      this.addEventListener('click', (ev) => {
+        this.addEventListener('click', (ev) => {
 
-        const event = new Event('focus')
-        this.dispatchEvent(event)
-      })
+            const event = new Event('focus')
+            this.dispatchEvent(event)
+        })
     }
+
+
+    onFocus() {}
 
     render() {
         super.render()
@@ -20,13 +23,17 @@ class RptText extends Element {
 
 
         if (!this.#intitialized) {
-            this.innerHTML = `<input value="${this.element.value || ''}" style="
-                    background: 0;
-                    height: 100%;
-                    border: 0;
-                    text-align: center;
-                    ">`
-            this.querySelector('input').oninput = ev => {
+            const input = document.createElement('input')
+
+            input.value = this.element.value
+            input.style.background = '0';
+            input.style.height = '100%';
+            input.style.border = '0';
+            input.style.textAlign = 'center';
+
+            this.append(input)
+
+            input.oninput = ev => {
                 ev.stopPropagation()
                 this.value = ev.target.value
                 console.log(ev.target.value)
